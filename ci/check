@@ -1,0 +1,16 @@
+#!/bin/sh
+set -eu
+
+# Inputs: N64LINK_GNU_AS (GNU MIPS as). Needs a C compiler with static libc, make, python3 and rg.
+if [ "$#" -ne 0 ]; then echo 'usage: ci/check (set N64LINK_GNU_AS)' >&2; exit 1; fi
+for tool in cc make python3 bash rg; do
+    command -v "$tool" >/dev/null 2>&1 || { echo "missing tool: $tool" >&2; exit 1; }
+done
+cd "$(dirname "$0")/.."
+if [ -z "${N64LINK_GNU_AS:-}" ]; then echo 'missing input: N64LINK_GNU_AS' >&2; exit 1; fi
+N64LINK_GNU_AS=$(command -v "$N64LINK_GNU_AS") || { echo "missing tool: $N64LINK_GNU_AS" >&2; exit 1; }
+export N64LINK_GNU_AS
+status=0
+bin/test || status=1
+bin/hygiene || status=1
+exit "$status"

@@ -1,0 +1,9 @@
+check:
+  image: debian:bookworm
+  variables:
+    N64LINK_GNU_AS: mips-linux-gnu-as
+  before_script:
+    - apt-get update
+    - apt-get install -y --no-install-recommends gcc libc6-dev make python3 binutils-mips-linux-gnu ripgrep
+  script:
+    - ci/check

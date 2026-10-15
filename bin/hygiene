@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+status=0
+rg -n -i --glob '!hygiene' --glob '!**/__pycache__/**' \
+    '\b(ai|agents?|lanes?|models?|claude|openai|chatgpt|codex)\b|/(home|mnt|Users|opt|tmp)/' \
+    csrc tests bin ci Makefile README.md || status=$?
+if [[ "$status" -eq 0 ]]; then
+    exit 1
+fi
+if [[ "$status" -ne 1 ]]; then
+    exit "$status"
+fi
