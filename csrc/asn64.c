@@ -11,7 +11,7 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-#include "n64link.h"
+#include "abumas.h"
 #include "util.h"
 
 static const char *const HEADER =
@@ -673,7 +673,7 @@ static void assemble(const char *content, const char *assembler, char **flags, s
         close(input[0]);
         close(input[1]);
         execvp(assembler, argv); /* --as may be a PATH name (the generated Makefile passes one) */
-        fprintf(stderr, "n64link: asn64: %s: %s\n", assembler, strerror(errno));
+        fprintf(stderr, "abumas: asn64: %s: %s\n", assembler, strerror(errno));
         _exit(127);
     }
     close(input[0]);

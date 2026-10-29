@@ -3,19 +3,19 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "n64link.h"
+#include "abumas.h"
 
 static const char USAGE[] =
     "usage:\n"
-    "  n64link asn64 [SOURCE.s]                         normalise SN64 cc1 assembly to stdout\n"
-    "  n64link asn64 --as AS [ASFLAGS...] SOURCE.s -o OBJECT\n"
+    "  abumas asn64 [SOURCE.s]                         normalise SN64 cc1 assembly to stdout\n"
+    "  abumas asn64 --as AS [ASFLAGS...] SOURCE.s -o OBJECT\n"
     "                                                   normalise, then assemble with GNU as\n"
-    "  n64link --version\n";
+    "  abumas --version\n";
 
 int main(int argc, char **argv) {
     if (argc >= 2 && strcmp(argv[1], "asn64") == 0) return asn64_main(argc - 2, argv + 2);
     if (argc == 2 && strcmp(argv[1], "--version") == 0) {
-        puts("n64link " N64LINK_VERSION " (SN ASN64 2.81 rules)");
+        puts("abumas " ABUMAS_VERSION " (SN ASN64 2.81 rules)");
         return 0;
     }
     fputs(USAGE, stderr);

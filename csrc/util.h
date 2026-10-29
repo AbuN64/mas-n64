@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: GPL-3.0-or-later */
 /* Copyright (C) 2026 mo */
-#ifndef N64LINK_UTIL_H
-#define N64LINK_UTIL_H
+#ifndef ABUMAS_UTIL_H
+#define ABUMAS_UTIL_H
 
 #include <stdarg.h>
 #include <stdbool.h>

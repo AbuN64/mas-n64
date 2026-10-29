@@ -13,7 +13,7 @@
 void die(const char *format, ...) {
     va_list args;
     va_start(args, format);
-    fputs("n64link: ", stderr);
+    fputs("abumas: ", stderr);
     vfprintf(stderr, format, args);
     fputc('\n', stderr);
     va_end(args);

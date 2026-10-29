@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Copyright (C) 2026 mo
-"""n64link asn64 builds fixture bytes exactly; refusals are named."""
+"""abumas asn64 builds fixture bytes exactly; refusals are named."""
 
 from __future__ import annotations
 
@@ -13,14 +13,14 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-BINARY = ROOT / "build/n64link"
+BINARY = ROOT / "build/abumas"
 ASFLAGS = ["-march=vr4300", "-mabi=32", "-EB", "-G0", "--no-pad-sections"]
 
 
 def assembler() -> str:
-    path = os.environ.get("N64LINK_GNU_AS")
+    path = os.environ.get("ABUMAS_GNU_AS")
     if not path:
-        raise RuntimeError("set N64LINK_GNU_AS to GNU MIPS as")
+        raise RuntimeError("set ABUMAS_GNU_AS to GNU MIPS as")
     return path
 
 
